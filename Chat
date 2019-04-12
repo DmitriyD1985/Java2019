@@ -1,0 +1,144 @@
+package chat3;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+
+public class ClientHandler extends Thread {
+    private final Socket client;
+
+    private ClientHandler(Socket client) {
+        this.client = client;
+        start();
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                    DataInputStream dis = new DataInputStream(client.getInputStream());
+                    if (dis.available()>0)
+                    {
+                        ??????????
+                    }
+            }
+            catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException ex) {
+
+            }
+        }
+    }
+}
+package chat3;
+
+import org.omg.CORBA.DataOutputStream;
+
+import java.io.IOException;
+import java.net.Socket;
+
+public class ClientLoader
+{
+    private Socket socket;
+    public static void main(String[] args)
+    {
+        connect();
+        handle();
+        end();
+    }
+        private static void connect()
+        {
+            try
+            {
+                socket = new Socket("localhost", 8888);
+            }
+            catch (IOException ex)
+            {
+              ex.printStackTrace();
+            }
+
+        }
+        private static void handle()
+        {
+            DataOutputStream dos = new DataOutputStream(socket.getOutputStream())
+            {
+                dos.writeInt
+            }
+        }
+        private static void end()
+        {
+
+            try
+            {
+                socket.close();
+            }
+            catch (IOException ex)
+            {
+                ex.printStackTrace();
+            }
+        }
+
+    }
+}
+package chat3;
+import java.beans.IntrospectionException;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class ServerLoader
+{
+    private static ServerSocket server;
+
+    public static void main(String[] args)
+    {
+        start();
+
+        handle();
+
+        end();
+    }
+
+    private static void handle()
+        {
+            while (true)
+            {
+                try
+                {
+                    Socket client = server.accept();
+                    new ClientHandler(client);
+                }
+                catch (IOException ex)
+                {
+                    ex.printStackTrace();
+                }
+                try
+                {
+                    Thread.sleep(10);
+                }
+                catch(InterruptedException ex)
+                {
+
+                }
+            }
+        }
+
+    private static void start() {
+        try {
+            server = new ServerSocket(8888);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private static void end() {
+        try {
+            server.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+}
