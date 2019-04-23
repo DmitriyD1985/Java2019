@@ -1,0 +1,35 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int value = Integer.parseInt(reader.readLine());
+        ArrayList<Object> listProd = new ArrayList<>();
+        String str = reader.readLine();
+        String name;
+        int weigth;
+        int cost;
+        String[] subStr;
+        String[] subStr2;
+        subStr = str.split(" ");
+        for (int i = 0; i < subStr.length; i++) {
+            String towar = subStr[i];
+            subStr2 = towar.split("/");
+            name = subStr2[0];
+            weigth = Integer.parseInt(subStr2[1]);
+            cost = Integer.parseInt(subStr2[2]);
+            listProd.add(new Product(name, weigth, cost));
+        }
+    }
+        public static void Ucomplext(ArrayList list, int value) {
+        ArrayList <Object> zagruzka = new ArrayList<>();
+        for (int i =0; i<list.size(); i++){
+            double maxPolza = list.get(i).indexPolzi;
+        }
+
+    }
+}
